@@ -92,7 +92,7 @@
                     </a>
                     <ul class="children collapse" id="sub-item-3">
                         <li>
-                            <a class="" href="quantri.php?page_layout=suasp">
+                            <a class="" href="quantri.php?page_layout=themsp">
                                 <svg class="glyph stroked plus sign"><use xlink:href="#stroked-plus-sign"/></svg> Thêm mới
                             </a>
                         </li>
@@ -106,17 +106,31 @@
 
                 </li>
                 <li class="parent ">
-                    <a href="#">
-                        <span data-toggle="collapse" href="#sub-item-5"><svg class="glyph stroked chevron-down"><use xlink:href="#stroked-chevron-down"></use></svg></span> Quản lý quảng cáo
+                    <a href="quantri.php?page_layout=danhsachtax">
+                        <span data-toggle="collapse" href="#sub-item-5"><svg class="glyph stroked chevron-down"><use xlink:href="#stroked-chevron-down"></use></svg></span> Quản lý thuế
                     </a>
                     <ul class="children collapse" id="sub-item-5">
+                        <li>
+                            <a class="" href="quantri.php?page_layout=themtax">
+                                <svg class="glyph stroked plus sign"><use xlink:href="#stroked-plus-sign"/></svg> Thêm mới
+                            </a>
+                        </li>
+
+                    </ul>			
+                </li>
+
+                <li class="parent ">
+                    <a href="#">
+                        <span data-toggle="collapse" href="#sub-item-6"><svg class="glyph stroked chevron-down"><use xlink:href="#stroked-chevron-down"></use></svg></span> Quản lý thuộc tính
+                    </a>
+                    <ul class="children collapse" id="sub-item-6">
                         <li>
                             <a class="" href="#">
                                 <svg class="glyph stroked plus sign"><use xlink:href="#stroked-plus-sign"/></svg> Thêm mới
                             </a>
                         </li>
 
-                    </ul>			
+                    </ul>           
                 </li>
 
                 <li><a href="#"><svg class="glyph stroked gear"><use xlink:href="#stroked-gear"/></svg> Cấu hình</a></li>
@@ -154,7 +168,13 @@
                     case 'themtv': include_once "./themtv.php";
                         break;
                     case 'suatv':include_once "./suatv.php";
-                        break;    
+                        break;
+                    case 'danhsachtax': include_once "./danhsachtax.php";    
+                        break;
+                    case 'themtax': include_once "./themtax.php";
+                        break;
+                    case 'suatax':include_once "./suatax.php";
+                        break;
                     }
                 }
                 else{
