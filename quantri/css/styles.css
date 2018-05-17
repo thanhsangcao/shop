@@ -297,8 +297,8 @@ a.bg-danger:hover {
 	font-size: 18px;
 	font-weight: 300;
 	letter-spacing: 0.025em;
-	height: 66px;
-	line-height: 45px;
+	/*height: 66px;*/
+	/*line-height: 45px;*/
 }
 
 .panel-default .panel-heading {

@@ -14,6 +14,7 @@
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/datepicker3.css" rel="stylesheet">
         <link href="css/styles.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/thuoctinh.css">
 
         <!--Icons-->
         <script src="js/lumino.glyphs.js"></script>
@@ -120,17 +121,9 @@
                 </li>
 
                 <li class="parent ">
-                    <a href="#">
+                    <a href="quantri.php?page_layout=danhsachtt">
                         <span data-toggle="collapse" href="#sub-item-6"><svg class="glyph stroked chevron-down"><use xlink:href="#stroked-chevron-down"></use></svg></span> Quản lý thuộc tính
-                    </a>
-                    <ul class="children collapse" id="sub-item-6">
-                        <li>
-                            <a class="" href="#">
-                                <svg class="glyph stroked plus sign"><use xlink:href="#stroked-plus-sign"/></svg> Thêm mới
-                            </a>
-                        </li>
-
-                    </ul>           
+                    </a>         
                 </li>
 
                 <li><a href="#"><svg class="glyph stroked gear"><use xlink:href="#stroked-gear"/></svg> Cấu hình</a></li>
@@ -174,6 +167,8 @@
                     case 'themtax': include_once "./themtax.php";
                         break;
                     case 'suatax':include_once "./suatax.php";
+                        break;
+                    case 'danhsachtt': include_once "./danhsachtt.php";    
                         break;
                     }
                 }
