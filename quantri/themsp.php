@@ -11,9 +11,34 @@
             $trang_thai=$_POST['trang_thai'];
             $dac_biet=$_POST['dac_biet'];
             $chi_tiet_sp=$_POST['chi_tiet_sp'];
-            $sql="INSERT INTO sanpham(ten_sp,gia_sp,bao_hanh,phu_kien,tinh_trang,anh_sp,khuyen_mai,trang_thai,dac_biet,chi_tiet_sp) VALUES ('$ten_sp','$gia_sp','$bao_hanh','$phu_kien','$tinh_trang','$anh_sp','$khuyen_mai','$trang_thai','$dac_biet','$chi_tiet_sp')";
-            $query=mysqli_query($db_con,$sql);
-            header('location:quantri.php?page_layout=danhsachsp');
+            $id_dm=$_POST['id_dm'];
+            if($_FILES['anh_sp']['name'] != NULL){ // Đã chọn file
+                // Tiến hành code upload file
+                if($_FILES['anh_sp']['type'] == "image/jpeg"
+                || $_FILES['anh_sp']['type'] == "image/png"
+                || $_FILES['anh_sp']['type'] == "image/gif"){
+                // là file ảnh
+                // Tiến hành code upload    
+                    if($_FILES['anh_sp']['size'] > 1048576){
+                        echo "File không được lớn hơn 1mb";
+                    }else{
+                        // file hợp lệ, tiến hành upload
+                        $path = "./anh/"; // file sẽ lưu vào thư mục data
+                        $tmp_name = $_FILES['anh_sp']['tmp_name'];
+                        $name = $_FILES['anh_sp']['name'];
+                        
+                        // Upload file
+                        move_uploaded_file($tmp_name,$path.$name);
+                        $sql="INSERT INTO sanpham(ten_sp,gia_sp,bao_hanh,phu_kien,tinh_trang,anh_sp,khuyen_mai,trang_thai,dac_biet,chi_tiet_sp,id_dm) VALUES ('$ten_sp','$gia_sp','$bao_hanh','$phu_kien','$tinh_trang','$anh_sp','$khuyen_mai','$trang_thai','$dac_biet','$chi_tiet_sp','$id_dm')";
+                        $query=mysqli_query($db_con,$sql);
+                        header('location:quantri.php?page_layout=danhsachsp');
+                   }
+                }else{
+                   // không phải file ảnh
+                   $error="<center class='alert alert-danger'> Kiểu file không hợp lệ </center> ";
+                }
+           }
+            
         }
     }
     
@@ -30,11 +55,22 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
-                        <div class="panel-heading">Thêm sản phẩm mới</div>
-                        <div class="panel-body">
+                        <div class="panel-heading">Thêm sản phẩm Mới</div>
 
+                        <div class="panel-body">
+                            
                             <form method="post" enctype="multipart/form-data" role="form">
+                                <div class="col-md-12">
+                                    <div class="col-md-6">
+                                        <?php 
+                                            if (isset($error)) {
+                                                echo $error;
+                                            }
+                                        ?>   
+                                    </div>
+                                </div>
                                 <div class="col-md-6">
+                                    
                                     <div class="form-group">
                                         <label>Tên sản phẩm</label>
                                         <input type="text" class="form-control"  name="ten_sp" required="">
@@ -87,15 +123,21 @@
                                         </div>
 
                                     </div>
-
+                                    
                                     <div class="form-group">
                                         <label>Nhà cung cấp</label>
                                         <select name="id_dm" class="form-control">
+
                                             <option value="unselect" selected>Lựa chọn nhà cung cấp</option>
-                                            <option>LG</option>
-                                            <option>Sony</option>
-                                            <option>Oppo</option>
-                                            <option>IPhone</option>
+                                            <?php 
+                                                $sql="SELECT * FROM dmsanpham";
+                                                $query=mysqli_query($db_con,$sql);
+                                                while ($row=mysqli_fetch_array($query)) {
+                                            ?>
+                                            <option value="<?php echo $row['id_dm']?>"><?php echo $row['ten_dm']?></option>
+                                            <?php 
+                                                }
+                                            ?>
                                         </select>
                                     </div>
                                     <div class="form-group">

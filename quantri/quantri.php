@@ -18,6 +18,7 @@
 
         <!--Icons-->
         <script src="js/lumino.glyphs.js"></script>
+        <script src="../js/jquery-3.1.1.min.js"></script>
 
         <!--[if lt IE 9]>
         <script src="js/html5shiv.js"></script>
@@ -73,6 +74,19 @@
                             </a>
                         </li>
                     </ul>			
+                </li>
+                <li class="parent ">
+                    <a href="quantri.php?page_layout=danhsachkh">
+                        <span data-toggle="collapse" href="#sub-item-7"><svg class="glyph stroked chevron-down"><use xlink:href="#stroked-chevron-down"></use></svg></span> Quản lý khách hàng
+                    </a>
+                    <ul class="children collapse" id="sub-item-7">
+                        <li>
+                            <a href="quantri.php?page_layout=themkh">
+                                <svg class="glyph stroked plus sign"><use xlink:href="#stroked-plus-sign"/></svg>
+                                Thêm mới
+                            </a>
+                        </li>
+                    </ul>           
                 </li>
                 <li class="parent ">
                     <a href="quantri.php?page_layout=danhsachdm">
@@ -143,34 +157,41 @@
             </div><!--/.row-->
             <?php
                 if (isset($_GET['page_layout'])) {
-                    switch ($_GET['page_layout']) {
-                    case 'danhsachdm': include_once "./danhsachdm.php";
-                        break;
-                    case 'danhsachsp': include_once "./danhsachsp.php";
-                        break;
-                    case 'suadm': include_once "./suadm.php";
-                        break;
-                    case 'suasp': include_once "./suasp.php";
-                        break;
-                    case 'themdm': include_once "./themdm.php";
-                        break;
-                    case 'themsp': include_once "./themsp.php";
-                        break;
-                    case 'danhsachtv': include_once "./danhsachtv.php";
-                        break;
-                    case 'themtv': include_once "./themtv.php";
-                        break;
-                    case 'suatv':include_once "./suatv.php";
-                        break;
-                    case 'danhsachtax': include_once "./danhsachtax.php";    
-                        break;
-                    case 'themtax': include_once "./themtax.php";
-                        break;
-                    case 'suatax':include_once "./suatax.php";
-                        break;
-                    case 'danhsachtt': include_once "./danhsachtt.php";    
-                        break;
-                    }
+                    include_once "./".$_GET['page_layout'].".php";
+                    // switch ($_GET['page_layout']) {
+                    // case 'danhsachdm': include_once "./danhsachdm.php";
+                    //     break;
+                    // case 'danhsachsp': include_once "./danhsachsp.php";
+                    //     break;
+                    // case 'suadm': include_once "./suadm.php";
+                    //     break;
+                    // case 'suasp': include_once "./suasp.php";
+                    //     break;
+                    // case 'themdm': include_once "./themdm.php";
+                    //     break;
+                    // case 'themsp': include_once "./themsp.php";
+                    //     break;
+                    // case 'danhsachtv': include_once "./danhsachtv.php";
+                    //     break;
+                    // case 'themtv': include_once "./themtv.php";
+                    //     break;
+                    // case 'suatv':include_once "./suatv.php";
+                    //     break;
+                    // case 'danhsachtax': include_once "./danhsachtax.php";    
+                    //     break;
+                    // case 'themtax': include_once "./themtax.php";
+                    //     break;
+                    // case 'suatax':include_once "./suatax.php";
+                    //     break;
+                    // case 'danhsachtt': include_once "./danhsachtt.php";    
+                    //     break;
+                    // case 'danhsachkh': include_once "./danhsachkh.php";    
+                    //     break;
+                    // case 'themkh': include_once "./themkh.php";    
+                    //     break;
+                    // case 'themdc': include_once "./themdc.php";    
+                    //     break;
+                    // }
                 }
                 else{
                     include_once"./gioithieu.php";

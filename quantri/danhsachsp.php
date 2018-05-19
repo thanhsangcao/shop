@@ -8,7 +8,7 @@
     }
     $rowsPerPage=10;
     $perRow=($page-1)*$rowsPerPage;
-    $sql="SELECT * FROM sanpham ORDER BY id_sp ASC LIMIT $perRow,$rowsPerPage";
+    $sql="SELECT sanpham.*,dmsanpham.ten_dm FROM sanpham INNER JOIN dmsanpham ON sanpham.id_dm=dmsanpham.id_dm ORDER BY id_sp ASC LIMIT $perRow,$rowsPerPage";
     $query=mysqli_query($db_con,$sql);
     $totalRow=mysqli_num_rows(mysqli_query($db_con,"SELECT * FROM sanpham"));
     $totalPage=ceil($totalRow/$rowsPerPage);
@@ -59,7 +59,7 @@
                                         <td data-checkbox="true"><?php echo $row['id_sp'];?></td>
                                         <td data-checkbox="true"><a href="quantri.php?page_layout=suasp&id_sp=<?php echo $row['id_sp'];?>"><?php echo $row['ten_sp'];?></a></td>
                                         <td data-checkbox="true"><?php echo $row['gia_sp'];?></td>
-                                        <td data-sortable="true">Sky</td>
+                                        <td data-sortable="true"><?php echo $row['ten_dm']?></td>
                                         <td data-sortable="true">
                                             <span class="thumb"><img width="80px" height="150px" src="../quantri/anh/<?php echo $row['anh_sp'];?>" /></span>
 
