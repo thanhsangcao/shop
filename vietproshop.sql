@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 17, 2018 lúc 06:24 AM
+-- Thời gian đã tạo: Th5 19, 2018 lúc 11:09 PM
 -- Phiên bản máy phục vụ: 10.1.28-MariaDB
 -- Phiên bản PHP: 7.0.25
 
@@ -62,6 +62,28 @@ INSERT INTO `blsanpham` (`id_bl`, `id_sp`, `ten`, `dien_thoai`, `binh_luan`, `ng
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `diachi`
+--
+
+CREATE TABLE `diachi` (
+  `id_diachi` int(11) NOT NULL,
+  `dia_chi` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `id_kh` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `diachi`
+--
+
+INSERT INTO `diachi` (`id_diachi`, `dia_chi`, `id_kh`) VALUES
+(4, 'aaaa1', 1),
+(5, 'bbbbc', 1),
+(8, 'T18', 1),
+(17, 'a', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `dmsanpham`
 --
 
@@ -108,8 +130,26 @@ CREATE TABLE `giatri_thuoctinh` (
 --
 
 INSERT INTO `giatri_thuoctinh` (`value_id`, `value_name`, `att_id`) VALUES
-(7, 'GOLD', 1),
-(8, '32GB', 3);
+(7, 'GOLD', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `khachhang`
+--
+
+CREATE TABLE `khachhang` (
+  `id_kh` int(11) NOT NULL,
+  `ten_kh` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `sdt` bigint(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `khachhang`
+--
+
+INSERT INTO `khachhang` (`id_kh`, `ten_kh`, `sdt`) VALUES
+(1, 'Cao Thanh Sang', 1638260650);
 
 -- --------------------------------------------------------
 
@@ -165,7 +205,9 @@ INSERT INTO `sanpham` (`id_sp`, `id_dm`, `ten_sp`, `anh_sp`, `gia_sp`, `bao_hanh
 (28, 7, 'Blackberry-Bold-9000', '3-BlackBerry-Bold-9700.jpg', '8000000000', '12 Tháng', 'Hộp, sách, sạc, cáp, tai nghe', 'Máy Mới 100%', 'Dán Màn Hình 3 lớp', 'Còn hàng', 1, '<p>(D&acirc;n tr&iacute;) - Đ&aacute;m ch&aacute;y b&ugrave;ng ph&aacute;t trưa nay, 7/4, tại khu nh&agrave; t&ocirc;n ngay gần t&ograve;a nh&agrave; Keangnam, đường Phạm H&ugrave;ng. Ngọn lửa c&ugrave;ng kh&oacute;i đen bốc l&ecirc;n dữ dội l&agrave;m đen kịt một g&oacute;c kh&ocirc;ng gian. Giao th&ocirc;ng quanh khu vực bị ảnh hưởng, trong đ&oacute; đường tr&ecirc;n cao bị tắc một đoạn kh&aacute; d&agrave;i...</p>\r\n'),
 (29, 7, 'BlackBerry-Curve-3G-9300', '5-BlackBerry-Curve-3G-9300.jpg', '8600000000', '12 Tháng', 'Hộp, sách, sạc, cáp, tai nghe', 'Máy Mới 100%', 'Dán Màn Hình 3 lớp', 'Còn hàng', 1, '<p>sasasa</p>\r\n'),
 (30, 6, 'Nokia-8800-Sirocco-Gold', '6-Nokia-8800-Sirocco-Gold.jpg', '100000000', '12 Tháng', 'Hộp, sách, sạc, cáp, tai nghe', 'Máy Mới 100%', 'Dán Màn Hình 3 lớp', 'Còn hàng', 1, '<p>Tất cả sản phẩm đều c&oacute; rất nhiều.</p>\r\n'),
-(31, 6, 'Lumia-800-Black', '8-lumia-800-den.jpg', '8600000', '12 Năm', 'Hộp, sách, sạc, cáp, tai nghe, ...', 'Máy Mới 1000%', 'Dán Màn Hình 13 lớp', 'Còn hàng', 1, '<p>Tất cả sản phẩm đều c&oacute; rất nhiều. Tất cả sản phẩm đều c&oacute; rất nhiều. Tất cả sản phẩm đều c&oacute; rất nhiều.</p>\r\n');
+(31, 6, 'Lumia-800-Black', '8-lumia-800-den.jpg', '8600000', '12 Năm', 'Hộp, sách, sạc, cáp, tai nghe, ...', 'Máy Mới 1000%', 'Dán Màn Hình 13 lớp', 'Còn hàng', 1, '<p>Tất cả sản phẩm đều c&oacute; rất nhiều. Tất cả sản phẩm đều c&oacute; rất nhiều. Tất cả sản phẩm đều c&oacute; rất nhiều.</p>\r\n'),
+(34, 1, 'aaaaa', '19988937_1489883577744745_6844712_n.jpg', '123', '12 Tháng', 'Hộp, sách, sạc, cáp, tai nghe', 'Máy Mới 100%', 'Dán Màn hình 3 lớp', 'Còn hàng', 0, ''),
+(37, 6, 'Thực', '19988937_1489883577744745_6844712_n.jpg', '123', '12 Tháng', 'Hộp, sách, sạc, cáp, tai nghe', 'Máy Mới 100%', 'Dán Màn hình 3 lớp', 'Còn hàng', 0, '');
 
 -- --------------------------------------------------------
 
@@ -241,6 +283,13 @@ ALTER TABLE `blsanpham`
   ADD PRIMARY KEY (`id_bl`);
 
 --
+-- Chỉ mục cho bảng `diachi`
+--
+ALTER TABLE `diachi`
+  ADD PRIMARY KEY (`id_diachi`),
+  ADD KEY `id_kh` (`id_kh`);
+
+--
 -- Chỉ mục cho bảng `dmsanpham`
 --
 ALTER TABLE `dmsanpham`
@@ -253,6 +302,12 @@ ALTER TABLE `giatri_thuoctinh`
   ADD PRIMARY KEY (`value_id`),
   ADD KEY `att_id` (`att_id`),
   ADD KEY `att_id_2` (`att_id`);
+
+--
+-- Chỉ mục cho bảng `khachhang`
+--
+ALTER TABLE `khachhang`
+  ADD PRIMARY KEY (`id_kh`);
 
 --
 -- Chỉ mục cho bảng `sanpham`
@@ -290,6 +345,12 @@ ALTER TABLE `blsanpham`
   MODIFY `id_bl` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
+-- AUTO_INCREMENT cho bảng `diachi`
+--
+ALTER TABLE `diachi`
+  MODIFY `id_diachi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
 -- AUTO_INCREMENT cho bảng `dmsanpham`
 --
 ALTER TABLE `dmsanpham`
@@ -299,13 +360,19 @@ ALTER TABLE `dmsanpham`
 -- AUTO_INCREMENT cho bảng `giatri_thuoctinh`
 --
 ALTER TABLE `giatri_thuoctinh`
-  MODIFY `value_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `value_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT cho bảng `khachhang`
+--
+ALTER TABLE `khachhang`
+  MODIFY `id_kh` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT cho bảng `sanpham`
 --
 ALTER TABLE `sanpham`
-  MODIFY `id_sp` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id_sp` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT cho bảng `tax`
@@ -328,6 +395,12 @@ ALTER TABLE `thuoctinh`
 --
 -- Các ràng buộc cho các bảng đã đổ
 --
+
+--
+-- Các ràng buộc cho bảng `diachi`
+--
+ALTER TABLE `diachi`
+  ADD CONSTRAINT `diachi_ibfk_1` FOREIGN KEY (`id_kh`) REFERENCES `khachhang` (`id_kh`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Các ràng buộc cho bảng `giatri_thuoctinh`

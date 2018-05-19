@@ -8,6 +8,11 @@
 		$id_kh=$_GET['id_kh'];
 		$sql="UPDATE diachi SET dia_chi='$dia_chi' where id_diachi=$id_diachi ";
 		$query=mysqli_query($db_con,$sql);
-        header('location:quantri.php?page_layout=themdc&id_kh='.$_GET['id_kh']);
+		if (isset($_GET['page_layout'])) {
+			header('location:quantri.php?page_layout=suakh&id_kh='.$_GET['id_kh']);			
+		}else{
+			header('location:quantri.php?page_layout=themdc&id_kh='.$_GET['id_kh']);	
+		}
+        
 	}
 ?>

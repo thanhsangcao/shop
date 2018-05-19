@@ -34,7 +34,12 @@
 
     
 ?>
-
+<script type="text/javascript">
+    function xoatax(){
+        var conf=confirm("Bạn có chắc chắn muốn xóa");
+        return conf;
+    }
+</script>
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">Thêm khách hàng mới</h1>
